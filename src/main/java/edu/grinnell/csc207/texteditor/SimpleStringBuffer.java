@@ -4,36 +4,101 @@ package edu.grinnell.csc207.texteditor;
  * A naive implementation of a text buffer using a <code>String</code>.
  */
 public class SimpleStringBuffer {
+    
+    String s;
+    int cursor;
+    
+    
+    /**
+     * Creates a new and empty SimpleStringBuffer.
+     */
+    public void SimpleStringBuffer() {
+        SimpleStringBuffer buffer = new SimpleStringBuffer();
+        cursor = 0;
+        s = null;
+    }
+    
+    /**
+     * Inserts the given character at the cursors given position and moves the 
+     * cursor forward one space.
+     * @param ch : The character to be inserted
+     */
     public void insert(char ch) {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        if(cursor == s.length()) {
+            s = s + ch;
+        } else if(cursor == 0) {
+            s = ch + s;
+        } else {
+        s = s.substring(0 , cursor) + ch + s.substring(cursor , s.length());
+        }
+        cursor++;
     }
 
+    
     public void delete() {
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
+        if (cursor == s.length())
+        {
+            s = s.substring(0, s.length() - 1);
+            cursor--;
+        } else if (cursor == 0) {
+            s = s.substring(1 , s.length());
+        } else {
+            s = s.substring(0 , cursor) + s.substring(cursor + 1, s.length());
+        }
     }
 
+    /**
+     * Returns the current position of the cursor.
+     * @return int : The position of the cursor.
+     */
     public int getCursorPosition() {
-        throw new UnsupportedOperationException("Unimplemented method 'getCursorPosition'");
+        return cursor;
     }
 
+    /**
+     * Moves the cursor one position to the left.
+     */
     public void moveLeft() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveLeft'");
+        if(cursor > 0) {
+            cursor--;
+        }
     }
 
+    /**
+     * Moves the cursor one position to the right.
+     */
     public void moveRight() {
-        throw new UnsupportedOperationException("Unimplemented method 'moveRight'");
+        if(cursor < s.length()) {
+            cursor++;
+        }
     }
 
+    /**
+     * Returns the size of the SimpleStringBuffer
+     * @return int : the size of SimpleStringBuffer.
+     */
     public int getSize() {
-        throw new UnsupportedOperationException("Unimplemented method 'getSize'");
+        return s.length();
     }
 
+   /**
+     * Returns the char from SimpleStringBuffer at index i
+     * @param i : int, the index of which the char is returned from
+     * @return char : The char in the string SimpleStringBuffer at index i.
+     */
     public char getChar(int i) {
-        throw new UnsupportedOperationException("Unimplemented method 'getChar'");
+        if(i > s.length()) {
+             throw new IndexOutOfBoundsException();
+        }
+        return s.charAt(i);
     }
 
+    /**
+     * Returns the contents of SimpleStringBuffer
+     * @return String : Returns the string that is the SimpleStringBuffer
+     */
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("Unimplemented method 'toString'");
+        return s;
     }
 }
