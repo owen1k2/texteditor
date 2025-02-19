@@ -27,8 +27,8 @@
 + Part 3: A mathematical model of the runtime of insert 
             as a function of the inputs and operations you chose.
         + Best case f(n) = 3
-        + Worst case f(n) = 6
-        + Average case f(n) = 5
+        + Worst case f(n) = n
+        + Average case f(n) = n
 + Part 4: Big-O Characterization of the Model:
         + insert is O(n) because it is linear.
 
@@ -36,3 +36,4 @@
 
 + Commit 1: Updated README and updated SimpleStringBuffer.java methods.
 + Commit 2: Created all test cases for SimpleStringBuffer.
++ Commit 3: Completed Part Two which was the analyzing of insert in simple string buffer.
