@@ -13,7 +13,6 @@ public class SimpleStringBuffer {
      * Creates a new and empty SimpleStringBuffer.
      */
     public void SimpleStringBuffer() {
-        SimpleStringBuffer buffer = new SimpleStringBuffer();
         cursor = 0;
         s = null;
     }
@@ -24,7 +23,9 @@ public class SimpleStringBuffer {
      * @param ch : The character to be inserted
      */
     public void insert(char ch) {
-        if(cursor == s.length()) {
+        if(s == null) {
+            s = ch + "";
+        } else if(cursor == s.length()) {
             s = s + ch;
         } else if(cursor == 0) {
             s = ch + s;
@@ -36,14 +37,13 @@ public class SimpleStringBuffer {
 
     
     public void delete() {
-        if (cursor == s.length())
-        {
+      if (cursor == s.length()) {
             s = s.substring(0, s.length() - 1);
             cursor--;
         } else if (cursor == 0) {
             s = s.substring(1 , s.length());
         } else {
-            s = s.substring(0 , cursor) + s.substring(cursor + 1, s.length());
+            s = s.substring(0 , cursor - 1) + s.substring(cursor , s.length());
         }
     }
 

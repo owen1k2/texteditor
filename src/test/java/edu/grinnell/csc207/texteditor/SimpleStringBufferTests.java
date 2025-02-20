@@ -47,12 +47,13 @@ public class SimpleStringBufferTests {
     }
     
     @Test
-    public void testGetChar() {
+    public void testGetCharGetSize() {
         SimpleStringBuffer buffer = new SimpleStringBuffer();
         buffer.insert('a');
         buffer.insert('b');
         buffer.insert('c');
         assertEquals('b' , buffer.getChar(1));
+        assertEquals(3 , buffer.getSize());
     }
     
     @Property
