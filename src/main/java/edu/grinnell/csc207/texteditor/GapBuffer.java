@@ -11,11 +11,19 @@ public class GapBuffer {
     int afterGapBeg = length - 1;
     char[] arr = new char[length];
     
+    /**
+     * Creates baseline for GapBuffer.
+     */
     public void GapBuffer() {
         gapBeg = 0;
         afterGapBeg = length - 1;
     }
     
+    /**
+     * Private helper method that doubles the storage of the array for GapBuffer.
+     * This function also organizes all values originally in the array to the 
+     * correct location after the change in size.
+     */
     private void doubleArray() {
        char[] temp = arr;
        length = length * 2;
@@ -34,6 +42,11 @@ public class GapBuffer {
        }
     }
     
+    /**
+     * Inserts the given char into the array at the location of the cursor
+     * and moves the cursor forward one.
+     * @param ch : A character to be inserted in the array.
+     */
     public void insert(char ch) {
         if (gapBeg > afterGapBeg) {
             doubleArray();
@@ -44,6 +57,10 @@ public class GapBuffer {
         
     }
 
+    /**
+     * Deletes an element of the array at the cursor and moves the cursor back
+     * one unless the cursor is at the beginning of the array.
+     */
     public void delete() {
        if(gapBeg != 0) {
         arr[gapBeg - 1] = '\0';
@@ -61,7 +78,8 @@ public class GapBuffer {
     }
 
     /**
-     * Moves the cursor one position to the left
+     * Moves the cursor one position to the left and changes characters in the
+     * array around if necessary.
      */
     public void moveLeft() {
         if (gapBeg > 0 && gapBeg < afterGapBeg) {
@@ -76,7 +94,8 @@ public class GapBuffer {
     }
 
     /**
-     * Moves the cursor one position to the right
+     * Moves the cursor one position to the right and changes characters in the 
+     * array around if necessary.
      */
     public void moveRight() {
         if (gapBeg < length && gapBeg < afterGapBeg) {
@@ -114,6 +133,10 @@ public class GapBuffer {
         return '\0';
     }
 
+    /**
+     * Returns the current array in string form.
+     * @return String : Returns the current array in string form.
+     */
     @Override
     public String toString() {
         String s = "";
