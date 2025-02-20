@@ -37,3 +37,7 @@
 + Commit 1: Updated README and updated SimpleStringBuffer.java methods.
 + Commit 2: Created all test cases for SimpleStringBuffer.
 + Commit 3: Completed Part Two which was the analyzing of insert in simple string buffer.
++ Commit 4: Completed Initial GapBuffer functions about to begin testing.
++ Commit 5: Completed everythin in GapBuffer besides doubling array length.
++ Commit 6: Completed Testing Suite for Gap Buffer.
++ Commit 7: Completed Testing Suite for Gap Buffer.
