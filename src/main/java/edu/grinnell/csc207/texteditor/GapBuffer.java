@@ -44,6 +44,8 @@ public class GapBuffer {
         for (int i = gapBeg + length / 2; i < length; i++) {
             arr[i] = temp[i - length / 2];
         }
+        
+        afterGapBeg = length - (length / 2 - afterGapBeg);
     }
 
     /**
