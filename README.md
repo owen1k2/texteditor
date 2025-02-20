@@ -10,6 +10,8 @@
 + Java 17.0.14
 + Testing Frameworks Lab
 + Spoke with Finn Rowles on a high level about the project
++ Starter code from the Project Instructions Part 4
++ Spoke with Professor Osera on a high level about the project
 
 ## Analyzing SimpleStringBuffer
 
@@ -41,3 +43,6 @@
 + Commit 5: Completed everythin in GapBuffer besides doubling array length.
 + Commit 6: Completed Testing Suite for Gap Buffer.
 + Commit 7: Completed Testing Suite for Gap Buffer.
++ Commit 8: README Updated
++ Commit 9: JavaDoc Updated and completed for GapBuffer.
++ Commit 10: Main is now completed and the program is functional.
