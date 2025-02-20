@@ -12,6 +12,7 @@
 + Spoke with Finn Rowles on a high level about the project
 + Starter code from the Project Instructions Part 4
 + Spoke with Professor Osera on a high level about the project
++ Spoke with Colton on a high level about the project
 
 ## Analyzing SimpleStringBuffer
 
@@ -46,3 +47,9 @@
 + Commit 8: README Updated
 + Commit 9: JavaDoc Updated and completed for GapBuffer.
 + Commit 10: Main is now completed and the program is functional.
++ Commit 11: Style Updates of GapBuffer.
++ Commit 12: Style Updates of TextEditor.
++ Commit 13: Style Updates of SimpleStringBuffer.
++ Commit 14: Style Updates of GapBufferTests.
++ Commit 15: Style Updates of SimpleStringBufferTests.
++ Commit 16: Updated error in DoubleArray to change afterGapBeg.
