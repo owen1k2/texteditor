@@ -7,58 +7,58 @@ import net.jqwik.api.*;
 import net.jqwik.api.constraints.*;
 
 public class GapBufferTests {
-    
-     @Test
+
+    @Test
     public void testAddEmptyDeleteBeginning() {
-       GapBuffer buffer = new GapBuffer();
+        GapBuffer buffer = new GapBuffer();
         buffer.insert('a');
-        assertEquals(1 , buffer.getCursorPosition());
-        assertEquals("a" , buffer.toString());
+        assertEquals(1, buffer.getCursorPosition());
+        assertEquals("a", buffer.toString());
         buffer.delete();
-        assertEquals(0 , buffer.getCursorPosition());
-        assertEquals("" , buffer.toString());
+        assertEquals(0, buffer.getCursorPosition());
+        assertEquals("", buffer.toString());
     }
-    
-     @Test 
+
+    @Test
     public void testAddEndDeleteEnd() {
         GapBuffer buffer = new GapBuffer();
         buffer.insert('a');
         buffer.insert('b');
-        assertEquals(2 , buffer.getCursorPosition());
+        assertEquals(2, buffer.getCursorPosition());
         buffer.insert('c');
-        assertEquals("abc" , buffer.toString());
+        assertEquals("abc", buffer.toString());
         buffer.delete();
-        assertEquals("ab" , buffer.toString());
+        assertEquals("ab", buffer.toString());
     }
-    
-     @Test
+
+    @Test
     public void testMoveCursorAddMiddleDeleteMiddle() {
         GapBuffer buffer = new GapBuffer();
         buffer.insert('a');
         buffer.insert('b');
         buffer.insert('c');
-        assertEquals(3 , buffer.getCursorPosition());
+        assertEquals(3, buffer.getCursorPosition());
         buffer.moveLeft();
         buffer.moveLeft();
-        assertEquals(1 , buffer.getCursorPosition());
+        assertEquals(1, buffer.getCursorPosition());
         buffer.moveRight();
-        assertEquals(2 , buffer.getCursorPosition());
+        assertEquals(2, buffer.getCursorPosition());
         buffer.delete();
-        assertEquals("ac" , buffer.toString());
+        assertEquals("ac", buffer.toString());
     }
-    
+
     @Test
     public void testGetCharGetSize() {
         GapBuffer buffer = new GapBuffer();
         buffer.insert('a');
         buffer.insert('b');
         buffer.insert('c');
-        assertEquals('b' , buffer.getChar(1));
-        assertEquals(3 , buffer.getSize());
+        assertEquals('b', buffer.getChar(1));
+        assertEquals(3, buffer.getSize());
         buffer.delete();
-        assertEquals(2 , buffer.getSize());
+        assertEquals(2, buffer.getSize());
     }
-    
+
     @Test
     public void testDoubleArray() {
         GapBuffer buffer = new GapBuffer();
@@ -67,22 +67,22 @@ public class GapBufferTests {
         buffer.insert('c');
         buffer.insert('d');
         buffer.insert('e');
-        assertEquals("abcde" , buffer.toString());
-        assertEquals(5 , buffer.getCursorPosition());
+        assertEquals("abcde", buffer.toString());
+        assertEquals(5, buffer.getCursorPosition());
         buffer.moveLeft();
         buffer.moveLeft();
         buffer.moveLeft();
-        assertEquals(2 , buffer.getCursorPosition());
+        assertEquals(2, buffer.getCursorPosition());
         buffer.insert('x');
-        assertEquals("abxcde" , buffer.toString());
+        assertEquals("abxcde", buffer.toString());
     }
-    
-     @Property
+
+    @Property
     public boolean testCursorMovement(@ForAll @IntRange(min = 0, max = 10) int sz) {
         GapBuffer buffer = new GapBuffer();
         for (int i = 0; i < sz; i++) {
             buffer.insert('a');
-	}
-            return buffer.getCursorPosition() == sz;
-	}
+        }
+        return buffer.getCursorPosition() == sz;
+    }
 }
