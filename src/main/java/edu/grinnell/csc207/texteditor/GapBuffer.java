@@ -17,26 +17,26 @@ public class GapBuffer {
     }
     
     private void doubleArray() {
-        char[] tempBeg = new char[length];
-        char[] tempEnd = new char[length];
-
-            for (int i = 0; i < gapBeg; i++) {
-               tempBeg[i] = arr[i];
-            }
-            
-            
-            for (int i = length; i > afterGapBeg; i--) {
-                tempEnd[i] = arr[i];
-            }    
-         
-        length = length * 2;
-        arr = new char[length];
-      //  arr = tempEnd + tempBeg;
+       char[] temp = arr;
+       length = length * 2;
+       arr = new char[length];
+       
+       for(int i = 0; i < gapBeg; i++) {
+           arr[i] = temp[i];
+       }
+       
+       for(int i = gapBeg; i < length / 2 + gapBeg; i++) {
+           arr[i] = '\0';
+       }
+       
+       for(int i = gapBeg + length / 2; i < length; i++) {
+           arr[i] = temp[i - length / 2];
+       }
     }
     
     public void insert(char ch) {
-        if (gapBeg == afterGapBeg) {
-        //    doubleArray();
+        if (gapBeg > afterGapBeg) {
+            doubleArray();
         }
         arr[gapBeg] = ch;
         gapBeg++;
@@ -64,11 +64,12 @@ public class GapBuffer {
      * Moves the cursor one position to the left
      */
     public void moveLeft() {
-        if (gapBeg > 0) {
-            System.out.println("gapBeg: " + gapBeg);
-            System.out.println("afterGapBeg: " + afterGapBeg);
+        if (gapBeg > 0 && gapBeg < afterGapBeg) {
             arr[afterGapBeg] = arr[gapBeg - 1];
             arr[gapBeg - 1] = '\0';
+            gapBeg--;
+            afterGapBeg--;
+        } else if (gapBeg > 0) {
             gapBeg--;
             afterGapBeg--;
         }
@@ -78,9 +79,12 @@ public class GapBuffer {
      * Moves the cursor one position to the right
      */
     public void moveRight() {
-        if (gapBeg < length) {
-            arr[gapBeg] = arr[afterGapBeg];
-            arr[afterGapBeg] = '\0';
+        if (gapBeg < length && gapBeg < afterGapBeg) {
+            arr[gapBeg] = arr[afterGapBeg + 1];
+            arr[afterGapBeg + 1] = '\0';
+            gapBeg++;
+            afterGapBeg++;
+        } else if (gapBeg < length) {
             gapBeg++;
             afterGapBeg++;
         }
