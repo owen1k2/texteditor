@@ -106,12 +106,12 @@ public class GapBuffer {
      * array around if necessary.
      */
     public void moveRight() {
-        if (gapBeg < arr.length && gapBeg < afterGapBeg) {
+        if (gapBeg < length - 1 && gapBeg < afterGapBeg) {
             arr[gapBeg] = arr[afterGapBeg + 1];
             arr[afterGapBeg + 1] = '\0';
             gapBeg++;
             afterGapBeg++;
-        } else if (gapBeg < length) {
+        } else if (gapBeg < length - 1) {
             gapBeg++;
             afterGapBeg++;
         }
