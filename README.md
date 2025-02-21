@@ -56,3 +56,7 @@
 + Commit 17: Fixes to test String: empty, String: delete middle.
 + Commit 18: Test updated
 + Commit 19: Fixes to Gap: cursor movement
++ Commit 20: Fixes to String Empty, Cursor Movement tests.
++ Commit 21: Updated tests
++ Commit 22 Changes to cursor movement gap.
+
