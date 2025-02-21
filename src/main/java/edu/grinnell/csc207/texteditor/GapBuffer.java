@@ -44,7 +44,7 @@ public class GapBuffer {
         for (int i = gapBeg + length / 2; i < length; i++) {
             arr[i] = temp[i - length / 2];
         }
-        
+
         afterGapBeg = length - (length / 2 - afterGapBeg);
     }
 
@@ -108,11 +108,11 @@ public class GapBuffer {
     public void moveRight() {
         if (gapBeg < length - 1 && gapBeg < afterGapBeg) {
             if (afterGapBeg < length - 1) {
-            arr[gapBeg] = arr[afterGapBeg + 1];
-            arr[afterGapBeg + 1] = '\0';
+                arr[gapBeg] = arr[afterGapBeg + 1];
+                arr[afterGapBeg + 1] = '\0';
+                gapBeg++;
+                afterGapBeg++;
             }
-            gapBeg++;
-            afterGapBeg++;
         } else if (gapBeg < length - 1) {
             gapBeg++;
             afterGapBeg++;
