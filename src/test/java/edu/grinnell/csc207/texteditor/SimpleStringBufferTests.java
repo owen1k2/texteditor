@@ -22,7 +22,11 @@ public class SimpleStringBufferTests {
         buffer.moveLeft();
         buffer.moveLeft();
         buffer.delete();
-        assertEquals("bcd", buffer.toString());
+        assertEquals(0, buffer.getCursorPosition());
+        buffer.delete();
+        assertEquals(0, buffer.getCursorPosition());
+        assertEquals("cd", buffer.toString());
+        assertEquals(2 , buffer.getSize());
     }
 
     @Test
