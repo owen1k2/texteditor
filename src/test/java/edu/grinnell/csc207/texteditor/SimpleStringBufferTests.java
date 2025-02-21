@@ -12,10 +12,17 @@ public class SimpleStringBufferTests {
     public void testAddEmptyDeleteBeginning() {
         SimpleStringBuffer buffer = new SimpleStringBuffer();
         buffer.insert('a');
-        assertEquals(1, buffer.getCursorPosition());
-        assertEquals("a", buffer.toString());
+        buffer.insert('b');
+        buffer.insert('c');
+        buffer.insert('d');
+        assertEquals(4, buffer.getCursorPosition());
+        assertEquals("abcd", buffer.toString());
+        buffer.moveLeft();
+        buffer.moveLeft();
+        buffer.moveLeft();
+        buffer.moveLeft();
         buffer.delete();
-        assertEquals("", buffer.toString());
+        assertEquals("bcd", buffer.toString());
     }
 
     @Test
