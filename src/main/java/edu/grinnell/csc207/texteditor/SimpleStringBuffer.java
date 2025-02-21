@@ -5,7 +5,7 @@ package edu.grinnell.csc207.texteditor;
  */
 public class SimpleStringBuffer {
 
-    String s;
+    String s = "";
     
     int cursor;
 
