@@ -53,3 +53,6 @@
 + Commit 14: Style Updates of GapBufferTests.
 + Commit 15: Style Updates of SimpleStringBufferTests.
 + Commit 16: Updated error in DoubleArray to change afterGapBeg.
++ Commit 17: Fixes to test String: empty, String: delete middle.
++ Commit 18: Test updated
++ Commit 19: Fixes to Gap: cursor movement
