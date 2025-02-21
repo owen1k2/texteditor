@@ -58,6 +58,19 @@ public class GapBufferTests {
         buffer.delete();
         assertEquals(2, buffer.getSize());
     }
+    
+    @Test
+    public void outOfBouns() {
+        GapBuffer buffer = new GapBuffer();
+        buffer.moveRight();
+        buffer.moveRight();
+        buffer.moveRight();
+        buffer.moveRight();
+        buffer.moveRight();
+       // buffer.moveRight();
+        assertEquals(4 , buffer.getCursorPosition());
+    }
+
 
     @Test
     public void testDoubleArray() {
@@ -69,6 +82,8 @@ public class GapBufferTests {
         buffer.insert('e');
         assertEquals("abcde", buffer.toString());
         assertEquals(5, buffer.getCursorPosition());
+        buffer.moveRight();
+        assertEquals(5 , buffer.getCursorPosition());
         buffer.moveLeft();
         buffer.moveLeft();
         buffer.moveLeft();
