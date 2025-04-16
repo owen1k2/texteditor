@@ -1,12 +1,36 @@
 package edu.grinnell.csc207.texteditor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import net.jqwik.api.*;
 import net.jqwik.api.constraints.*;
 
 public class SimpleStringBufferTests {
+
+    private SimpleStringBuffer makeBufferWith(String s) {
+        SimpleStringBuffer buf = new SimpleStringBuffer();
+        for (int i = 0; i < s.length(); i++) {
+            buf.insert(s.charAt(i));
+        }
+        return buf;
+    }
+
+    @Test
+    @DisplayName("Gap: delete front")
+    public void cursorDeleteFrontTest() {
+        SimpleStringBuffer buf = makeBufferWith("abc");
+        for (int i = 0; i < 3; i++) {
+            buf.moveLeft();
+        }
+        buf.delete();
+        assertEquals(3, buf.getSize(), "size");
+        assertEquals(0, buf.getCursorPosition(), "cursor");
+        assertEquals("abc", buf.toString(), "contents");
+    }
+
 
     @Test
     public void testAddEmptyDeleteBeginning() {

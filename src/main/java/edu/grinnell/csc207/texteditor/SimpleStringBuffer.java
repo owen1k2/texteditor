@@ -45,7 +45,7 @@ public class SimpleStringBuffer {
             s = s.substring(0, s.length() - 1);
             cursor--;
         } else if (cursor == 0) {
-            s = s.substring(1, s.length());
+            s = s.substring(0, s.length());
         } else {
             s = s.substring(0, cursor - 1) + s.substring(cursor, s.length());
             cursor--;
