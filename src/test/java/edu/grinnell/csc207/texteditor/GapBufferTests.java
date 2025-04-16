@@ -1,6 +1,8 @@
 package edu.grinnell.csc207.texteditor;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import net.jqwik.api.*;
@@ -78,6 +80,24 @@ public class GapBufferTests {
         buffer.insert('x');
         assertEquals("abxcde", buffer.toString());
     }
+
+
+    @Test
+    @DisplayName("Gap: delete front")
+    public void cursorDeleteFrontTest() {
+        GapBuffer buf = new GapBuffer();
+        buf.insert('a');
+        buf.insert('b');
+        buf.insert('c');
+        for (int i = 0; i < 3; i++) {
+            buf.moveLeft();
+        }
+        buf.delete();
+        assertEquals(3, buf.getSize(), "size");
+        assertEquals(0, buf.getCursorPosition(), "cursor");
+        assertEquals("abc", buf.toString(), "contents");
+    }
+    
 
     @Property
     public boolean testCursorMovement(@ForAll @IntRange(min = 0, max = 10) int sz) {

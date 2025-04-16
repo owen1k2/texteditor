@@ -34,6 +34,7 @@ public class TextEditor {
      * @param args command-line arguments.
      * @throws java.io.IOException
      */
+    @SuppressWarnings("deprecation")
     public static void main(String[] args) throws IOException {
         DefaultTerminalFactory factory = new DefaultTerminalFactory();
         Screen screen = factory.createScreen();
@@ -44,7 +45,6 @@ public class TextEditor {
             System.exit(1);
         }
 
-        // TODO: fill me in with a text editor TUI!
         String path = args[0];
         if (Files.exists(Paths.get(path))) {
             if (Files.isRegularFile(Paths.get(path))) {
@@ -78,8 +78,9 @@ public class TextEditor {
                         break;
                     case Backspace:
                         buffer.delete();
+                      //  screen.clear();
                         screen.setCursorPosition(
-                                new TerminalPosition(buffer.getCursorPosition(), 0));
+                                new TerminalPosition(buffer.getCursorPosition() + 1, 0));
                         break;
                     default:
                         isRunning = false;
