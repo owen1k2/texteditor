@@ -9,6 +9,15 @@ import net.jqwik.api.*;
 import net.jqwik.api.constraints.*;
 
 public class GapBufferTests {
+    
+        private GapBuffer makeBufferWith(String s) {
+            GapBuffer buf = new GapBuffer();
+            for (int i = 0; i < s.length(); i++) {
+                buf.insert(s.charAt(i));
+            }
+            return buf;
+        }
+    
 
     @Test
     public void testAddEmptyDeleteBeginning() {
@@ -97,9 +106,21 @@ public class GapBufferTests {
         assertEquals(0, buf.getCursorPosition(), "cursor");
         assertEquals("abc", buf.toString(), "contents");
     }
-    
 
-    @Property
+    @Test
+    @DisplayName("Gap: delete front")
+    public void dF() {
+        GapBuffer buf = makeBufferWith("abc");
+        for (int i = 0; i < 3; i++) {
+            buf.moveLeft();
+        }
+        buf.delete();
+        assertEquals(3, buf.getSize(), "size");
+        assertEquals(0, buf.getCursorPosition(), "cursor");
+        assertEquals("abc", buf.toString(), "contents");
+    }
+        
+            @Property
     public boolean testCursorMovement(@ForAll @IntRange(min = 0, max = 10) int sz) {
         GapBuffer buffer = new GapBuffer();
         for (int i = 0; i < sz; i++) {
