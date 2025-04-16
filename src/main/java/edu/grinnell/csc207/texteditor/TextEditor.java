@@ -61,7 +61,7 @@ public class TextEditor {
                 switch (stroke.getKeyType()) {
                     case Character:
                         buffer.insert(stroke.getCharacter());
-                        screen.setCharacter(buffer.getCursorPosition(), 0,
+                        screen.setCharacter(buffer.getCursorPosition() - 1, 0,
                                 new TextCharacter(stroke.getCharacter()));
                         screen.setCursorPosition(
                                 new TerminalPosition(buffer.getCursorPosition(), 0));
@@ -69,7 +69,7 @@ public class TextEditor {
                     case ArrowLeft:
                         buffer.moveLeft();
                         screen.setCursorPosition(
-                                new TerminalPosition(buffer.getCursorPosition(), 0));
+                                new TerminalPosition(buffer.getCursorPosition() - 1, 0));
                         break;
                     case ArrowRight:
                         buffer.moveRight();
@@ -78,9 +78,8 @@ public class TextEditor {
                         break;
                     case Backspace:
                         buffer.delete();
-                      //  screen.clear();
                         screen.setCursorPosition(
-                                new TerminalPosition(buffer.getCursorPosition() + 1, 0));
+                                new TerminalPosition(buffer.getCursorPosition(), 0));
                         break;
                     default:
                         isRunning = false;

@@ -93,7 +93,7 @@ public class GapBufferTests {
 
     @Test
     @DisplayName("Gap: delete front")
-    public void cursorDeleteFrontTest() {
+    public void dF() {
         GapBuffer buf = new GapBuffer();
         buf.insert('a');
         buf.insert('b');
@@ -109,7 +109,7 @@ public class GapBufferTests {
 
     @Test
     @DisplayName("Gap: delete front")
-    public void dF() {
+    public void cursorDeleteFrontTest() {
         GapBuffer buf = makeBufferWith("abc");
         for (int i = 0; i < 3; i++) {
             buf.moveLeft();
