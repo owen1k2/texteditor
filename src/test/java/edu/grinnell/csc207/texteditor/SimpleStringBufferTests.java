@@ -43,10 +43,8 @@ public class SimpleStringBufferTests {
         assertEquals("abcd", buffer.toString());
         buffer.moveLeft();
         buffer.moveLeft();
-        buffer.moveLeft();
-        buffer.moveLeft();
         buffer.delete();
-        assertEquals(0, buffer.getCursorPosition());
+        assertEquals(1, buffer.getCursorPosition());
         buffer.delete();
         assertEquals(0, buffer.getCursorPosition());
         assertEquals("cd", buffer.toString());
