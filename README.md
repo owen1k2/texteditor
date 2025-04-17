@@ -2,6 +2,12 @@
 
 **Author**: Owen Block
 
+## Changelog
+
++ Updated so that program now passes all auto grader tests
++ Updated so that arrow keys and cursor now work as intended
++ Updated so that the file is saved on deletion
+
 ## Resources Used
 
 + Apache Netbeans
@@ -61,4 +67,6 @@
 + Commit 22: Changes to cursor movement gap.
 + Commit 23: Updated Tests
 + Commit 24: Updated cursor movement for gap buffer.
++ Commit 25: Fixed to pass all auto grader tests.
++ Commit 27: Fixed all movement and cursor issues.
 
